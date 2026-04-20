@@ -11,8 +11,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(232, 64, 36, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(127, 119, 221, 0.15) 0%, transparent 60%);
+    radial-gradient(ellipse at 20% 50%, rgb(232 64 36 / 15%) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgb(127 119 221 / 15%) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -23,7 +23,7 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #E84024;
-  border: 1px solid rgba(232, 64, 36, 0.4);
+  border: 1px solid rgb(232 64 36 / 40%);
   padding: 4px 14px;
   border-radius: 20px;
   margin-bottom: 24px;
@@ -32,7 +32,7 @@
 .hero h1 {
   font-size: clamp(36px, 6vw, 72px);
   font-weight: 800;
-  color: #ffffff;
+  color: #fff;
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin: 0 auto 16px;
@@ -45,7 +45,7 @@
 
 .hero p {
   font-size: 18px;
-  color: rgba(255,255,255,0.6);
+  color: rgb(255 255 255 / 60%);
   max-width: 540px;
   margin: 0 auto 36px;
   line-height: 1.6;
@@ -66,13 +66,13 @@
 .hero .hero-stat-value {
   font-size: 36px;
   font-weight: 800;
-  color: #ffffff;
+  color: #fff;
   line-height: 1;
 }
 
 .hero .hero-stat-label {
   font-size: 12px;
-  color: rgba(255,255,255,0.4);
+  color: rgb(255 255 255 / 40%);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-top: 4px;
@@ -99,9 +99,9 @@
 }
 
 .hero .hero-badge-secondary {
-  background: rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.7);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: rgb(255 255 255 / 8%);
+  color: rgb(255 255 255 / 70%);
+  border: 1px solid rgb(255 255 255 / 15%);
 }
 
 .hero .hero-live-dot {
@@ -116,11 +116,19 @@
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .hero { padding: 60px 20px; }
   .hero .hero-stats { gap: 28px; }
 }

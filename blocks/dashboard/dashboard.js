@@ -1,5 +1,3 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
 export default function decorate(block) {
   const rows = [...block.children];
   block.innerHTML = '';
@@ -9,7 +7,7 @@ export default function decorate(block) {
   statsSection.className = 'dashboard-stats';
 
   // Parse stats from first 4 rows
-  for (let i = 0; i < Math.min(4, rows.length); i++) {
+  for (let i = 0; i < Math.min(4, rows.length); i += 1) {
     const row = rows[i];
     const cells = [...row.children];
     if (cells.length >= 2) {

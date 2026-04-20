@@ -12,7 +12,7 @@ export default function decorate(block) {
   const timeline = document.createElement('div');
   timeline.className = 'schedule-timeline';
 
-  rows.forEach((row, index) => {
+  rows.forEach((row) => {
     const cells = [...row.children];
     if (cells.length >= 4) {
       const dayNum = cells[0]?.textContent.trim();

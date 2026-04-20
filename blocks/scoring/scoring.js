@@ -14,7 +14,7 @@ export default function decorate(block) {
   criteriaList.className = 'scoring-criteria';
 
   // Parse criteria rows (first 5 rows)
-  for (let i = 0; i < 5 && i < rows.length; i++) {
+  for (let i = 0; i < 5 && i < rows.length; i += 1) {
     const row = rows[i];
     const cells = [...row.children];
     if (cells.length >= 2) {
@@ -60,7 +60,7 @@ export default function decorate(block) {
   judgesGrid.className = 'judges-grid';
 
   // Parse judge rows (rows 5-8)
-  for (let i = 5; i < 9 && i < rows.length; i++) {
+  for (let i = 5; i < 9 && i < rows.length; i += 1) {
     const row = rows[i];
     const cells = [...row.children];
     if (cells.length >= 3) {
@@ -117,7 +117,7 @@ export default function decorate(block) {
   prizesGrid.className = 'prizes-grid';
 
   // Parse prize rows (remaining rows)
-  for (let i = 9; i < rows.length; i++) {
+  for (let i = 9; i < rows.length; i += 1) {
     const row = rows[i];
     const cells = [...row.children];
     if (cells.length >= 2) {

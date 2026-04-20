@@ -22,7 +22,7 @@ export default function decorate(block) {
   stepsList.className = 'about-steps';
 
   // Rows 2-6 are the 5 steps
-  for (let i = 1; i <= 5 && i < rows.length; i++) {
+  for (let i = 1; i <= 5 && i < rows.length; i += 1) {
     const stepRow = rows[i];
     const stepText = stepRow.textContent.trim();
     if (stepText) {
@@ -57,7 +57,7 @@ export default function decorate(block) {
   toolsGrid.className = 'tools-grid';
 
   // Remaining rows are tools
-  for (let i = 6; i < rows.length; i++) {
+  for (let i = 6; i < rows.length; i += 1) {
     const toolRow = rows[i];
     const toolName = toolRow.textContent.trim();
     if (toolName) {
