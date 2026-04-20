@@ -1,0 +1,97 @@
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-stat-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-stat-card .stat-value {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-stat-card .stat-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: capitalize;
+}
+
+.dashboard-stat-card .stat-meta {
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+
+.dashboard-progress {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.dashboard-progress .progress-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-progress .progress-bar-container {
+  height: 8px;
+  background: #f1f1f1;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-progress .progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #e84024 0%, #ff6347 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.dashboard-progress .progress-text {
+  text-align: right;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+@media (width >= 768px) {
+  .dashboard {
+    padding: 3rem 2rem;
+  }
+
+  .dashboard-stats {
+    gap: 1.5rem;
+  }
+
+  .dashboard-stat-card {
+    padding: 2rem;
+  }
+}
