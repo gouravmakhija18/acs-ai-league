@@ -1,14 +1,17 @@
+import { getCurrentDay, getConfig, getProgressPct } from '../../scripts/hackathon.js';
+
 export default function decorate(block) {
   const rows = [...block.children];
   block.innerHTML = '';
 
-  // Stats section
+  const { totalDays } = getConfig();
+  const currentDay = getCurrentDay();
+  const progressPct = getProgressPct();
+
   const statsSection = document.createElement('div');
   statsSection.className = 'dashboard-stats';
 
-  // Parse stats from first 4 rows
-  for (let i = 0; i < Math.min(4, rows.length); i += 1) {
-    const row = rows[i];
+  rows.forEach((row) => {
     const cells = [...row.children];
     if (cells.length >= 2) {
       const stat = document.createElement('div');
@@ -31,32 +34,31 @@ export default function decorate(block) {
       } else {
         stat.append(value, label);
       }
-
       statsSection.appendChild(stat);
     }
-  }
+  });
 
-  // Progress bar section
+  block.appendChild(statsSection);
+
   const progressSection = document.createElement('div');
   progressSection.className = 'dashboard-progress';
 
-  const progressLabel = document.createElement('div');
-  progressLabel.className = 'progress-label';
-  progressLabel.textContent = 'Hackathon progress';
+  const progressLabelEl = document.createElement('div');
+  progressLabelEl.className = 'progress-label';
+  progressLabelEl.textContent = 'Hackathon progress';
 
   const progressBar = document.createElement('div');
   progressBar.className = 'progress-bar-container';
 
   const progressFill = document.createElement('div');
   progressFill.className = 'progress-bar-fill';
-  progressFill.style.width = '60%'; // Day 3 of 5
+  progressFill.style.width = `${progressPct}%`;
 
   const progressText = document.createElement('div');
   progressText.className = 'progress-text';
-  progressText.textContent = 'Day 3 / 5';
+  progressText.textContent = `Day ${currentDay} / ${totalDays}`;
 
   progressBar.appendChild(progressFill);
-  progressSection.append(progressLabel, progressBar, progressText);
-
-  block.append(statsSection, progressSection);
+  progressSection.append(progressLabelEl, progressBar, progressText);
+  block.appendChild(progressSection);
 }

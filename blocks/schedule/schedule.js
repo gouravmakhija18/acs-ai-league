@@ -1,35 +1,29 @@
+import { getDayStatus } from '../../scripts/hackathon.js';
+
 export default function decorate(block) {
   const rows = [...block.children];
   block.innerHTML = '';
 
-  // Create header
-  const header = document.createElement('h2');
-  header.className = 'schedule-title';
-  header.textContent = '5-Day Hackathon Schedule';
-  block.appendChild(header);
-
-  // Create timeline
   const timeline = document.createElement('div');
   timeline.className = 'schedule-timeline';
 
   rows.forEach((row) => {
     const cells = [...row.children];
     if (cells.length >= 4) {
-      const dayNum = cells[0]?.textContent.trim();
+      const dayNum = parseInt(cells[0]?.textContent.trim(), 10);
       const dayName = cells[1]?.textContent.trim();
       const title = cells[2]?.textContent.trim();
       const desc = cells[3]?.textContent.trim();
-      const status = cells[4]?.textContent.trim().toLowerCase() || 'upcoming';
-      const tags = cells[5]?.textContent.trim().split(',') || [];
+      const status = getDayStatus(dayNum);
+      const tagsRaw = cells[4]?.textContent.trim() || '';
+      const tags = tagsRaw ? tagsRaw.split(',') : [];
 
       const item = document.createElement('div');
       item.className = `schedule-item status-${status}`;
 
-      // Status dot
       const dot = document.createElement('div');
       dot.className = `schedule-dot status-${status}`;
 
-      // Day info
       const day = document.createElement('div');
       day.className = 'schedule-day';
 
@@ -43,7 +37,6 @@ export default function decorate(block) {
 
       day.append(num, name);
 
-      // Content
       const content = document.createElement('div');
       content.className = 'schedule-content';
 
@@ -55,20 +48,19 @@ export default function decorate(block) {
       descEl.className = 'schedule-desc';
       descEl.textContent = desc;
 
-      // Tags
       const tagsContainer = document.createElement('div');
       tagsContainer.className = 'schedule-tags';
 
+      const statusLabel = status.charAt(0).toUpperCase() + status.slice(1);
+      const statusTag = document.createElement('span');
+      statusTag.className = `schedule-tag tag-${status}`;
+      statusTag.textContent = status === 'live' ? 'Live now' : statusLabel;
+      tagsContainer.appendChild(statusTag);
+
       tags.forEach((tag) => {
         const tagEl = document.createElement('span');
-        const trimmedTag = tag.trim();
         tagEl.className = 'schedule-tag';
-        tagEl.textContent = trimmedTag;
-
-        // Add status-specific class to first tag
-        if (tags.indexOf(tag) === 0) {
-          tagEl.classList.add(`tag-${status}`);
-        }
+        tagEl.textContent = tag.trim();
         tagsContainer.appendChild(tagEl);
       });
 

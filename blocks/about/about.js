@@ -1,16 +1,18 @@
 export default function decorate(block) {
   const rows = [...block.children];
+  block.innerHTML = '';
 
-  // First row becomes the main description
-  const firstRow = rows[0];
-  if (firstRow) {
-    const desc = firstRow.querySelector('p');
-    if (desc) {
-      desc.classList.add('about-description');
-    }
+  // Row 0: main description paragraph
+  if (rows[0]) {
+    const descWrapper = document.createElement('div');
+    descWrapper.className = 'about-description';
+    const p = document.createElement('p');
+    p.textContent = rows[0].textContent.trim();
+    descWrapper.appendChild(p);
+    block.appendChild(descWrapper);
   }
 
-  // Process "How it works" section
+  // Rows 1-5: "How it works" steps
   const howItWorks = document.createElement('div');
   howItWorks.className = 'about-section';
 
@@ -21,10 +23,8 @@ export default function decorate(block) {
   const stepsList = document.createElement('ol');
   stepsList.className = 'about-steps';
 
-  // Rows 2-6 are the 5 steps
   for (let i = 1; i <= 5 && i < rows.length; i += 1) {
-    const stepRow = rows[i];
-    const stepText = stepRow.textContent.trim();
+    const stepText = rows[i].textContent.trim();
     if (stepText) {
       const li = document.createElement('li');
       li.className = 'about-step';
@@ -45,7 +45,7 @@ export default function decorate(block) {
   howItWorks.appendChild(stepsList);
   block.appendChild(howItWorks);
 
-  // Tools section
+  // Rows 6+: tools grid, or CTA if the row contains a link
   const toolsSection = document.createElement('div');
   toolsSection.className = 'about-section';
 
@@ -56,30 +56,33 @@ export default function decorate(block) {
   const toolsGrid = document.createElement('div');
   toolsGrid.className = 'tools-grid';
 
-  // Remaining rows are tools
+  let ctaLink = null;
+
   for (let i = 6; i < rows.length; i += 1) {
-    const toolRow = rows[i];
-    const toolName = toolRow.textContent.trim();
-    if (toolName) {
-      const toolCard = document.createElement('div');
-      toolCard.className = 'tool-card';
-      toolCard.textContent = toolName;
-      toolsGrid.appendChild(toolCard);
+    const link = rows[i].querySelector('a[href]');
+    if (link && !ctaLink) {
+      // First link row becomes the CTA button
+      ctaLink = link;
+    } else {
+      const toolName = rows[i].textContent.trim();
+      if (toolName) {
+        const toolCard = document.createElement('div');
+        toolCard.className = 'tool-card';
+        toolCard.textContent = toolName;
+        toolsGrid.appendChild(toolCard);
+      }
     }
   }
 
   toolsSection.appendChild(toolsGrid);
   block.appendChild(toolsSection);
 
-  // Add CTA button
-  const ctaSection = document.createElement('div');
-  ctaSection.className = 'about-cta';
-
-  const ctaButton = document.createElement('a');
-  ctaButton.href = '#';
-  ctaButton.className = 'button secondary';
-  ctaButton.textContent = 'Register your team →';
-
-  ctaSection.appendChild(ctaButton);
-  block.appendChild(ctaSection);
+  // CTA — from authored link or hidden if not provided
+  if (ctaLink) {
+    const ctaSection = document.createElement('div');
+    ctaSection.className = 'about-cta';
+    ctaLink.className = 'button secondary';
+    ctaSection.appendChild(ctaLink);
+    block.appendChild(ctaSection);
+  }
 }

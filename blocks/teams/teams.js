@@ -2,22 +2,6 @@ export default function decorate(block) {
   const rows = [...block.children];
   block.innerHTML = '';
 
-  // Create header
-  const header = document.createElement('div');
-  header.className = 'teams-header';
-
-  const title = document.createElement('h2');
-  title.className = 'teams-title';
-  title.textContent = 'Meet the Teams';
-
-  const subtitle = document.createElement('p');
-  subtitle.className = 'teams-subtitle';
-  subtitle.textContent = '12 teams competing across 5 Adobe product areas. Each team pitches one innovation idea powered by Adobe tools.';
-
-  header.append(title, subtitle);
-  block.appendChild(header);
-
-  // Create teams grid
   const grid = document.createElement('div');
   grid.className = 'teams-grid';
 
@@ -35,7 +19,6 @@ export default function decorate(block) {
       const card = document.createElement('div');
       card.className = 'team-card';
 
-      // Header with avatar and info
       const cardHeader = document.createElement('div');
       cardHeader.className = 'team-card-header';
 
@@ -43,7 +26,6 @@ export default function decorate(block) {
       avatar.className = 'team-avatar';
       avatar.textContent = initials;
 
-      // Set avatar color based on index
       const colors = [
         { bg: '#fef3c7', color: '#92400e' },
         { bg: '#eef2ff', color: '#4338ca' },
@@ -70,7 +52,6 @@ export default function decorate(block) {
       info.append(nameEl, focusEl);
       cardHeader.append(avatar, info);
 
-      // Score badge (top right)
       if (score) {
         const scoreBadge = document.createElement('div');
         scoreBadge.className = 'team-score';
@@ -78,12 +59,10 @@ export default function decorate(block) {
         cardHeader.appendChild(scoreBadge);
       }
 
-      // Idea
       const ideaEl = document.createElement('p');
       ideaEl.className = 'team-idea';
       ideaEl.textContent = `"${idea}"`;
 
-      // Members
       const membersContainer = document.createElement('div');
       membersContainer.className = 'team-members';
       members.forEach((member) => {
@@ -93,7 +72,6 @@ export default function decorate(block) {
         membersContainer.appendChild(memberChip);
       });
 
-      // Tools
       const toolsContainer = document.createElement('div');
       toolsContainer.className = 'team-tools';
       tools.forEach((tool) => {

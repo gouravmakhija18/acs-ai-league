@@ -149,6 +149,13 @@ export default async function decorate(block) {
         }
       });
     });
+
+    const currentPath = window.location.pathname;
+    navSections.querySelectorAll('a[href]').forEach((link) => {
+      if (new URL(link.href, window.location).pathname === currentPath) {
+        link.closest('li').classList.add('active');
+      }
+    });
   }
 
   // hamburger for mobile
