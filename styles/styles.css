@@ -73,7 +73,7 @@
 body {
   display: none;
   margin: 0;
-  background-color: var(--background-color);
+  background-color: #f8f9fa;
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
@@ -306,6 +306,15 @@ main > .section > div {
   padding: 0 24px;
 }
 
+/* Ensure proper spacing for blocks */
+main .section {
+  margin: 0;
+}
+
+main .section > div {
+  padding: 0;
+}
+
 main > .section:first-of-type {
   margin-top: 0;
 }
@@ -322,4 +331,41 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* ACS AI League Dark Theme */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Dark Footer */
+footer {
+  background: #1a1a2e;
+  color: white;
+}
+
+footer a:any-link {
+  color: white;
+}
+
+footer a:hover {
+  color: #e84024;
+}
+
+/* Navigation */
+header .nav-wrapper {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+header nav a:any-link {
+  color: #1a1a2e;
+}
+
+header nav a:hover {
+  color: #e84024;
+}
+
+/* Section anchor targets */
+[id] {
+  scroll-margin-top: calc(var(--nav-height) + 20px);
 }
