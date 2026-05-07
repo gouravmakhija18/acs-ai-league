@@ -1,0 +1,69 @@
+{
+  ":names": ["name", "path", "description"],
+  ":type": "sheet",
+  "data": [
+    {
+      "name": "Hero",
+      "path": "/blocks/hero",
+      "description": "Eye-catching hero section with live status, title, description, statistics, and action badges"
+    },
+    {
+      "name": "Cards",
+      "path": "/blocks/cards",
+      "description": "Display content in card format"
+    },
+    {
+      "name": "Columns",
+      "path": "/blocks/columns",
+      "description": "Multi-column layout for content"
+    },
+    {
+      "name": "Dashboard",
+      "path": "/blocks/dashboard",
+      "description": "Dashboard display for hackathon statistics and information"
+    },
+    {
+      "name": "Leaderboard",
+      "path": "/blocks/leaderboard",
+      "description": "Display team rankings and scores"
+    },
+    {
+      "name": "Schedule",
+      "path": "/blocks/schedule",
+      "description": "Display hackathon schedule and timeline"
+    },
+    {
+      "name": "Scoring",
+      "path": "/blocks/scoring",
+      "description": "Show scoring criteria and methodology"
+    },
+    {
+      "name": "Teams",
+      "path": "/blocks/teams",
+      "description": "Display team information and members"
+    },
+    {
+      "name": "About",
+      "path": "/blocks/about",
+      "description": "About section for hackathon details"
+    },
+    {
+      "name": "Fragment",
+      "path": "/blocks/fragment",
+      "description": "Embed reusable content fragments"
+    },
+    {
+      "name": "Header",
+      "path": "/blocks/header",
+      "description": "Site header with navigation"
+    },
+    {
+      "name": "Footer",
+      "path": "/blocks/footer",
+      "description": "Site footer with links and information"
+    }
+  ],
+  "total": 12,
+  "offset": 0,
+  "limit": 12
+}
